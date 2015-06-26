@@ -17,3 +17,19 @@
   (testing "Bike can be fixed"
     (let [broken-bike {:status :broken}]
       (is (= (working? (repair! broken-bike)) true)))))
+
+(deftest docking-bikes
+  (testing "Bike can be docked"
+    (let [bike {:status :working} station []]
+      (is (= (dock bike station) [bike]))))
+  (testing "Dock contains one bike after docking"
+    (let [bike {:status :working} station []]
+      (is (= (count (dock bike station)) 1)))))
+
+(deftest undocking-bikes
+  (testing "Bike can be undocked"
+    (let [bike {:status :working} station [bike]]
+      (is (= (undock station) []))))
+  (testing "Dock contains no bikes after undocking"
+    (let [bike {:status :working} station [bike]]
+      (is (= (bike-count (undock station)) 0)))))

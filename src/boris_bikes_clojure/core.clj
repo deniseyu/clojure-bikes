@@ -11,3 +11,15 @@
 (defn repair!
   [bike]
   (assoc bike :status :working))
+
+(defn dock
+  [bike station]
+  (conj station bike))
+
+(defn bike-count
+  [station]
+  (count station))
+
+(defn undock
+  [station]
+  (pop station))
